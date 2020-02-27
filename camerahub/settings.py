@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'moderation',
     'fullurl',
+    'data_wizard',
+    'data_wizard.sources', 
 ]
 
 MIDDLEWARE = [
@@ -60,6 +62,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_currentuser.middleware.ThreadLocalUserMiddleware',
 ]
+
+DATA_WIZARD = {
+ #   'BACKEND': 'data_wizard.backends.threading',
+    #'LOADER': 'data_wizard.loaders.FileLoader',
+    #'IDMAP': 'data_wizard.idmap.never',   # 'data_wizard.idmap.existing' in 2.0
+    #'AUTHENTICATION': 'rest_framework.authentication.SessionAuthentication',
+    'PERMISSION': 'rest_framework.permissions.IsAdminUser',
+}
 
 ROOT_URLCONF = 'camerahub.urls'
 

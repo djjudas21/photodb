@@ -22,4 +22,5 @@ urlpatterns = [
     path('accounts/', include('django_registration.backends.activation.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('favicon.urls')),
+    path('datawizard/', include('data_wizard.urls')),
 ]
