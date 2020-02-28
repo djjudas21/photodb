@@ -18,6 +18,14 @@ from schema.models import Flash, FlashProtocol, Format, Lens, LensModel, Manufac
 from schema.models import Mount, MountAdapter, NegativeSize, Order, PaperStock, Person, Print, Toning
 from schema.models import Process, Repair, Scan, Negative, Film, Series, ShutterSpeed, Teleconverter, Toner
 
+# django-export-import
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
+
+class CameraModelResource(resources.ModelResource):
+    class Meta:
+        model = CameraModel
+
 # Define inlines that can be embedded into other admin pages
 class CameraInline(admin.TabularInline):
   model = Camera
@@ -69,7 +77,8 @@ class CameraAdmin(admin.ModelAdmin):
   exclude = ('owner',)
 admin.site.register(Camera, CameraAdmin)
 
-class CameraModelAdmin(admin.ModelAdmin):
+class CameraModelAdmin(ImportExportModelAdmin):
+  resource_class = CameraModelResource
   fieldsets = (
     (None, {
       'fields': ('manufacturer', 'model', 'mount', 'format', 'body_type', 'weight', ('introduced', 'discontinued'), 'negative_size', 'cable_release', 'viewfinder_coverage', ('power_drive', 'continuous_fps'), 'fixed_mount', 'lensmodel', ('battery_qty', 'battery_type'), 'notes', 'tripod', 'series'),

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'moderation',
     'fullurl',
+    'import_export',
 ]
 
 MIDDLEWARE = [
