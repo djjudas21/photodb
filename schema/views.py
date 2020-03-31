@@ -33,6 +33,11 @@ from schema.formhelpers import DeveloperFormHelper, EnlargerFormHelper, FilmForm
 from schema.formhelpers import LensFormHelper, LensModelFormHelper, MountAdapterFormHelper, MountFormHelper, NegativeFormHelper
 from schema.formhelpers import OrderFormHelper, PaperStockFormHelper, PrintFormHelper, RepairFormHelper, TeleconverterFormHelper, TonerFormHelper
 
+from redis_metrics import metric
+
+# Increment the metric by one as a test
+metric('new-user-signup')
+
 # Custom class for filtered list views in table format
 
 

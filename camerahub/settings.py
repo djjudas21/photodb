@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'moderation',
     'fullurl',
     'django_filters',
+    'redis_metrics',
 ]
 
 MIDDLEWARE = [
@@ -188,4 +189,18 @@ LOGGING = {
             'level': os.getenv('DJANGO_LOG_LEVEL', 'WARNING'),
         },
     },
+}
+
+REDIS_METRICS = {
+   'CONNECTION_CLASS': None,
+   'HOST': 'localhost',
+   'PORT': 6379,
+   'DB':  0,
+   'PASSWORD': None,
+   'SOCKET_TIMEOUT': 0,
+   'SOCKET_CONNECTION_POOL': None,
+   'MIN_GRANULARITY': 'daily',
+   'MAX_GRANULARITY': 'yearly',
+   'MONDAY_FIRST_DAY_OF_WEEK': False,
+   'USE_ISO_WEEK_NUMBER': False,
 }
