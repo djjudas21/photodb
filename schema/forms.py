@@ -256,11 +256,11 @@ class CameraModelForm(ModelForm):
         )
     def save(self, *args, **kwargs):
         # Create, but don't save the new instance
-        tempform = form.save(commit=False)
+        tempform = self.save(commit=False)
         # Save the new instance
         tempform.save()
         # Now, save the many-to-many data for the form
-        form.save_m2m()
+        self.save_m2m()
 
 
 class DeveloperForm(ModelForm):
