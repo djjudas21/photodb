@@ -254,7 +254,7 @@ class CameraModelForm(ModelForm):
                 Button('cancel', 'Cancel')
             )
         )
-    def save(self, *args, **kwargs):
+    def save(self, commit=True):
         # Create, but don't save the new instance
         instance = self.save(commit=False)
         # Save the new instance
