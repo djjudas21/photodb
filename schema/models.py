@@ -78,7 +78,7 @@ class Manufacturer(models.Model):
     def save(self, *args, **kwargs):
         custom_slugify_unique = Slugify(to_lower=True)
         self.slug = custom_slugify_unique(self.name)
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def clean(self):
         # City/country
@@ -204,7 +204,7 @@ class Battery(models.Model):
     def save(self, *args, **kwargs):
         custom_slugify_unique = Slugify(to_lower=True)
         self.slug = custom_slugify_unique(self.name)
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('battery-detail', kwargs={'slug': self.slug})
@@ -608,7 +608,7 @@ class Mount(models.Model):
     def save(self, *args, **kwargs):
         custom_slugify_unique = Slugify(to_lower=True)
         self.slug = custom_slugify_unique(self.mount)
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     class Meta:
         ordering = ['mount']
@@ -809,7 +809,7 @@ class Toner(models.Model):
                 unique_check=toner_check, to_lower=True)
             self.slug = custom_slugify_unique(
                 "{} {}".format(self.manufacturer.name, self.name))
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('toner-detail', kwargs={'slug': self.slug})
@@ -864,7 +864,7 @@ class FilmStock(models.Model):
                 unique_check=filmstock_check, to_lower=True)
             self.slug = custom_slugify_unique(
                 "{} {}".format(self.manufacturer.name, self.name))
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('filmstock-detail', kwargs={'slug': self.slug})
@@ -1010,7 +1010,7 @@ class Developer(models.Model):
                 unique_check=developer_check, to_lower=True)
             self.slug = custom_slugify_unique(
                 "{} {}".format(self.manufacturer.name, self.name))
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('developer-detail', kwargs={'slug': self.slug})
@@ -1394,7 +1394,7 @@ class CameraModel(models.Model):
                 unique_check=cameramodel_check, to_lower=True)
             self.slug = custom_slugify_unique("{} {} {}".format(
                 self.manufacturer.name, self.model, str(self.disambiguation or '')))
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def clean(self):
         # Enforce either fixed or interchangeable lens
