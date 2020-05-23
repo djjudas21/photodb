@@ -130,6 +130,18 @@ class CameraModelForm(ModelForm):
         model = CameraModel
         fields = '__all__'
 
+    def save(self, commit=True):
+        form = super(CameraModelForm, self).save(commit=False)
+        #obj = form.save(commit=False)
+        #obj.user = request.user
+        #obj.save()
+        if commit:
+            form.save(commit=False)
+            #obj.save()
+            # Without this next line the tags won't be saved.
+            form.save_m2m()
+        return form
+
     def __init__(self, *args, **kwargs):
         super(CameraModelForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
