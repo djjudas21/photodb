@@ -1,5 +1,5 @@
 # CameraHub
-FROM python:3.8-alpine
+FROM djjudas21/poetry AS build-env
 LABEL maintainer "Jonathan Gazeley"
 
 # Project Files and Settings
@@ -14,13 +14,15 @@ ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 # Install deps from apk and poetry
 RUN apk --no-cache add pcre mailcap libpq jpeg libmagic \
   && apk --no-cache add --virtual .build-deps gcc musl-dev linux-headers pcre-dev postgresql-dev git libffi-dev zlib-dev jpeg-dev \
-  && pip install poetry \
-  && poetry config virtualenvs.create false \
   && poetry install -E pgsql --no-dev -n \
   && apk --no-cache del .build-deps
 
 # Call collectstatic (customize the following line with the minimal environment variables needed for manage.py to run):
 RUN python manage.py collectstatic --noinput
+
+#FROM gcr.io/distroless/python3
+#COPY --from=build-env $PROJECT_DIR $PROJECT_DIR
+#WORKDIR $PROJECT_DIR
 
 # Run migrations
 ENV DJANGO_MANAGEPY_MIGRATE=on
