@@ -5,3 +5,5 @@ venv
 icons
 db/db.sqlite3
 icons
+.git
+.github
