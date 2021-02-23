@@ -124,7 +124,7 @@ class CameraModelTable(tables.Table):
         attrs = {"class": "table table-hover"}
         model = CameraModel
         fields = ('model', 'image', 'mount', 'format',
-                  'introduced', 'body_type', 'negative_size')
+                  'introduced', 'body_type', 'negative_size', 'ratings')
 
     @classmethod
     def render_model(cls, value, record):

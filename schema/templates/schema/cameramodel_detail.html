@@ -501,6 +501,7 @@
   <tr>
     <td>Rating</td>
     <td>{% ratings object %}</td>
+    <td>{{ object.ratings.average }}</td>
   </tr>
   {% if object.tags.all %}
   <tr>
