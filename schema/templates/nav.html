@@ -47,8 +47,20 @@
                     aria-haspopup="true" aria-expanded="false">
                     Private data
                 </a>
+                <!-- qty = Camera.objects.filter(
+                owner=cls.request.user, own=True, cameramodel=record).count()
+            if qty > 0:
+                badge = format_html(
+                    " <span class=\"badge badge-pill badge-primary\">{}</span>", qty)
+            else:
+                badge = format_html("") -->
+
+
+
                 <div class="dropdown-menu" aria-labelledby="privatenavbarDropdown">
-                    <a class="dropdown-item" href="{% url 'schema:camera-list' %}">Cameras</a>
+                    {% with cameras=camera.objects.count %}
+                    <a class="dropdown-item" href="{% url 'schema:camera-list' %}">Cameras <span class="badge badge-pill badge-primary">{{ cameras }}</span></a>
+                    {% endwith %}
                     <a class="dropdown-item" href="{% url 'schema:lens-list' %}">Lenses</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'schema:accessory-list' %}">Accessories</a>
